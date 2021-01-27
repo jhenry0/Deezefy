@@ -1,1 +1,1 @@
-web: gunicorn deezefy.wsgi
+web: gunicorn --chdir deezefy deezefy.wsgi:application --log-file=- --log-level debug
