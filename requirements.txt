@@ -2,3 +2,5 @@ Django==3.1.5
 djangorestframework==3.12.2
 djangorestframework-simplejwt==4.6.0
 python-dotenv
+gunicorn=20.0.4
+django-heroku=0.3.1
