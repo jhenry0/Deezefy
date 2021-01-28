@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path("v1/", include("apps.accounts.urls")),
+    path("v1/", include("apps.musica.urls")),
 ]

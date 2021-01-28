@@ -1,6 +1,6 @@
 from django.db import models
 
-from apps.accounts.models import Listener, Artist
+from apps.accounts.models import Listener, Artist, User
 # Create your models here.
 
 class Musica(models.Model):
@@ -40,7 +40,7 @@ class Playlist(models.Model):
 
 
 class Cria(models.Model):
-    ouvinte = models.ForeignKey(Listener, on_delete=models.CASCADE, related_name="criador", verbose_name="Ouvinte")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="criador", verbose_name="Ouvinte")
     playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name="criada", verbose_name="Playlist")
     data_de_criacao = models.DateField(verbose_name="Data de criação")
 
@@ -57,8 +57,8 @@ class Grava(models.Model):
     musica = models.ForeignKey(Musica, on_delete=models.CASCADE, related_name="Musica", verbose_name="Musica")
 
     class Meta:
-        verbose_name="Curte"
-        verbose_name_plural="Curtem"
+        verbose_name="Grava"
+        verbose_name_plural="Gravam"
 
     def __str__(self):
         return f"{self.artista} - {self.musica}"

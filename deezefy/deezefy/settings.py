@@ -85,8 +85,12 @@ WSGI_APPLICATION = 'deezefy.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd9sqeh2p436lm5',
+        'USER':'exbkinclhksgbq',
+        'PASSWORD':'eac54a16b576371d0823e836c1d1971dd55cae8df6a607d3aea83d7216f6544a',
+        'HOST':'ec2-52-2-6-71.compute-1.amazonaws.com',
+        'PORT':'5432'
     }
 }
 
