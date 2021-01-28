@@ -126,6 +126,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+CORS_ALLOW_HEADERS = default_headers + ("Cache-Control", "If-Modified-Since",)
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = False
 
 STATIC_URL = '/static/'
 
