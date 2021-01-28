@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
+import datetime
 
 from corsheaders.defaults import default_headers
 import django_heroku
@@ -41,8 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt',
     'corsheaders',
     'apps.accounts',
+    'apps.musica'
 ]
 
 MIDDLEWARE = [
@@ -129,10 +132,16 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = "accounts.User"
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication'
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        
+    ),
 }
 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=365),
+}
+
+APPEND_SLASH=False
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
 django_heroku.settings(locals())
