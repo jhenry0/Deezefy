@@ -14,10 +14,10 @@ class User(AbstractUser):
 
 
 class Artist(models.Model):
-    stage_name = models.CharField(max_length=200, verbose_name="Nome artistico")
+    stage_name = models.CharField(max_length=200, verbose_name="Nome artistico", unique=True)
     biography = models.TextField(verbose_name="Biografia")
     formation_year = models.IntegerField(verbose_name="Ano de formação")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Usuario")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Usuario")
 
     class Meta:
         verbose_name="Artista"
@@ -28,10 +28,10 @@ class Artist(models.Model):
 
 
 class Listener(models.Model):
-    phone = models.CharField(max_length=15, blank=True, verbose_name="Numero de Telefone")
+    phone = models.CharField(max_length=20, blank=True, verbose_name="Numero de Telefone")
     primeiro_nome = models.CharField(max_length=50, verbose_name="Primeiro nome")
     sobrenome = models.CharField(max_length=50, verbose_name="Sobrenome")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Usario")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="Usario")
 
     class Meta:
         verbose_name="Ouvinte"

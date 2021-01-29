@@ -41,8 +41,8 @@ class Playlist(models.Model):
 
 class Cria(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="criador", verbose_name="Ouvinte")
-    playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE, related_name="criada", verbose_name="Playlist")
-    data_de_criacao = models.DateField(verbose_name="Data de criação")
+    playlist = models.OneToOneField(Playlist, on_delete=models.CASCADE, related_name="criada", verbose_name="Playlist")
+    data_de_criacao = models.DateField(verbose_name="Data de criação", auto_now_add=True)
 
     class Meta:
         verbose_name="Cria"
